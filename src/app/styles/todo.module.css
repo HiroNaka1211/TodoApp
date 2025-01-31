@@ -1,0 +1,34 @@
+.list {
+  @apply flex justify-between p-4 border-l-4 border-blue-500 rounded shadow;
+}
+
+.input {
+  @apply mr-2 py-1 px-2 rounded border-gray-400 border min-w-60;
+}
+
+.text {
+  @apply mr-2 max-w-60;
+  word-break: break-all;
+}
+
+.editBtn {
+  @apply px-4 py-1 text-white bg-blue-600 rounded;
+  min-width: 90;
+  max-height: 32;
+}
+
+.deleteBtn {
+  @apply px-4 py-1 text-white bg-red-600 rounded min-w-20;
+  min-width: 90;
+  max-height: 32;
+}
+
+.saveBtn {
+  @apply px-4 py-1 text-white bg-green-600 rounded min-w-20;
+  min-width: 90;
+  max-height: 32;
+}
+
+.buttonContainer {
+  @apply flex justify-center items-center gap-6;
+}
