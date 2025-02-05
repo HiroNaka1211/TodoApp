@@ -1,19 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Todo from "./todo";
 import style from "../styles/todoList.module.css";
+import { TodoListProps } from "@/type";
 
-export default function TodoList() {
+export default function TodoList({ todos }: TodoListProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const onEditingTodoId = (id: string | null) => {
     setEditingId(editingId === id ? null : id);
   };
-  const todos = [
-    { id: "1", text: "AAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB", completed: true },
-    { id: "2", text: "BBB", completed: false },
-    { id: "3", text: "CCC", completed: true },
-  ];
   return (
     <ul className={style.ul}>
       {todos.map((todo) => (

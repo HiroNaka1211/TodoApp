@@ -4,6 +4,10 @@ export type TodoType = {
   completed: boolean;
 };
 
+export type TodoListProps = {
+  todos: TodoType[];
+};
+
 export interface TodoProps {
   todo: TodoType;
   editingId: boolean;
