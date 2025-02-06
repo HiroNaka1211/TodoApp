@@ -1,15 +1,15 @@
 "use client";
-import { TodoProps } from "@/type";
+import { TodoProps, TodoType } from "@/type";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import style from "../styles/todo.module.css";
+import { deleteTodo } from "@/api";
 
 export default function Todo({ todo, editingId, onEditingTodoId }: TodoProps) {
   const router = useRouter();
   const ref = useRef<HTMLInputElement>(null);
 
   const [inputText, setInputText] = useState<string>(todo.text);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     if (editingId) {
@@ -29,11 +29,12 @@ export default function Todo({ todo, editingId, onEditingTodoId }: TodoProps) {
     onEditingTodoId(todo.id);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
+    const deletedTodo: TodoType | undefined = await deleteTodo(todo.id);
+    alert(deletedTodo?.text + "を削除しました");
     onEditingTodoId(null);
+    router.refresh();
   };
-
-  console.log(editingId);
 
   const handleCancel = () => {
     onEditingTodoId(todo.id);
