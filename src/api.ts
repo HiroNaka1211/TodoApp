@@ -57,3 +57,24 @@ export const deleteTodo = async (id: string): Promise<TodoType | undefined> => {
     return undefined;
   }
 };
+
+export const updateTodo = async (id: string, newText: string): Promise<TodoType | undefined> =>{
+  try {
+    const res = await fetch(`http://localhost:3001/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({text:newText})
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP error!: Status${res.status}`);
+    }
+    const updatedTodo = await res.json();
+    console.log(updatedTodo)
+    return updatedTodo;
+  } catch (error) {
+    console.log("エラーです。", error);
+    return undefined;
+  }
+}
