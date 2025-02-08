@@ -3,7 +3,7 @@ import { TodoProps, TodoType } from "@/type";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import style from "../styles/todo.module.css";
-import { deleteTodo } from "@/api";
+import { deleteTodo, updateTodo } from "@/api";
 
 export default function Todo({ todo, editingId, onEditingTodoId }: TodoProps) {
   const router = useRouter();
@@ -21,8 +21,10 @@ export default function Todo({ todo, editingId, onEditingTodoId }: TodoProps) {
     setInputText(e.target.value);
   };
 
-  const handleSave = () => {
-    onEditingTodoId(todo.id);
+  const handleSave = async () => {
+    await updateTodo(todo.id, inputText);
+    onEditingTodoId(null);
+    router.refresh();
   };
 
   const handleEdit = () => {
