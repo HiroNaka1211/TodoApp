@@ -13,3 +13,9 @@ export interface TodoProps {
   editingId: boolean;
   onEditingTodoId: (id: string | null) => void;
 }
+
+export interface ModalProps{
+ setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  toggleModal:(e: React.MouseEvent<HTMLElement>) => void;
+}
+
