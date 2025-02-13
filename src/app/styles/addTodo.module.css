@@ -1,15 +1,6 @@
-.form {
-  @apply mb-4 space-y-2;
+.container {
+  @apply mb-4;
 }
-
-.input {
-  @apply w-full border px-4 py-2 rounded-lg focus:outline-none border-blue-500;
-}
-
 .btn {
   @apply py-1 w-full text-white rounded-lg bg-blue-600 transition-all hover:bg-blue-800 hover:scale-95 duration-200;
-}
-
-.errorMsg {
-  @apply m-0 text-red-500;
 }
